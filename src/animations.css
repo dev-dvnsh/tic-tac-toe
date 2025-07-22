@@ -1,0 +1,183 @@
+/* Enhanced animations and visual effects for the tic-tac-toe game interface */
+
+/* Creates a gentle pulsing effect for the current player indicator to draw attention */
+.game-status h4 {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Smooth entrance animation when placing X or O pieces on the board */
+.square h5 {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Welcome animation for the game board when the page first loads */
+.board-container {
+  animation: boardEnter 0.8s ease-out;
+}
+
+@keyframes boardEnter {
+  0% {
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Celebration animation that plays when someone wins the game */
+.winner-message {
+  animation: winnerCelebration 0.8s ease-out;
+}
+
+@keyframes winnerCelebration {
+  0% {
+    transform: scale(0.5) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Shows a preview of the next move when hovering over empty squares */
+.square:hover:not([data-value="X"]):not([data-value="O"])::before {
+  content: attr(data-preview);
+  position: absolute;
+  font-size: 2em;
+  color: rgba(52, 152, 219, 0.3);
+  font-weight: bold;
+  animation: previewPulse 0.5s ease-in-out;
+}
+
+@keyframes previewPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+/* Shake effect to indicate when a player tries to click on an occupied square */
+.square.invalid-move {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Satisfying button press animation for the play again button */
+.play-again-btn:active {
+  animation: buttonClick 0.2s ease-in-out;
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Adds a congratulatory message that gently sways above the winner announcement */
+.winner-message::after {
+  content: 'Congratulations';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1em;
+  animation: confetti 2s infinite;
+}
+
+@keyframes confetti {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-60%) translateY(-5px) rotate(5deg);
+  }
+  75% {
+    transform: translateX(-40%) translateY(-5px) rotate(-5deg);
+  }
+}
+
+/* Enhanced touch feedback for mobile devices to improve user experience */
+@media (hover: none) and (pointer: coarse) {
+  .square:active {
+    background: linear-gradient(145deg, #e8f4f8, #f0f8ff);
+    transform: scale(0.95);
+  }
+}
+
+/* Dark theme styling for users who prefer darker interfaces */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #ecf0f1;
+    --text-color: #ecf0f1;
+    --background-color: #2c3e50;
+    --border-color: #34495e;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  }
+  
+  .board-container {
+    background: rgba(44, 62, 80, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .square {
+    background: linear-gradient(145deg, #34495e, #2c3e50);
+    border-color: #4a6741;
+  }
+  
+  .square:hover {
+    background: linear-gradient(145deg, #4a6741, #34495e);
+  }
+}

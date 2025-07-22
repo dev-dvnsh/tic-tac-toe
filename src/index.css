@@ -1,38 +1,117 @@
+/* Global CSS variables that define the color scheme and design tokens for the entire application */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --background-color: #ecf0f1;
+  --text-color: #2c3e50;
+  --border-color: #bdc3c7;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Universal reset to ensure consistent styling across different browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Background styling with a beautiful gradient that covers the entire viewport */
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: var(--text-color);
+  font-family: inherit;
+}
+
+/* Root container that centers all content vertically and horizontally */
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Link styling with smooth color transitions */
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--secondary-color);
   text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  transition: color 0.3s ease;
 }
 
+/* Hover effect for links that changes them to the accent color */
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Main heading styling for prominent page titles */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
+/* Subheading styling for section titles and game status */
+h4 {
+  font-size: 1.5em;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Styling for X and O text that prevents text selection */
+h5 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin: 0;
+  user-select: none;
+}
+
+/* Universal button styling with modern design and smooth interactions */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  border-radius: 12px;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1em;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #8bcad3;
+  background: linear-gradient(145deg, var(--secondary-color), #2980b9);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
+/* Hover effect that lifts buttons and enhances the shadow */
 button:hover {
-  border-color: #646cff;
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+  background: linear-gradient(145deg, #2980b9, var(--secondary-color));
 }
+
+/* Click effect that provides immediate tactile feedback */
+button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow);
+}
+
+/* Focus styling for keyboard navigation accessibility */
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 3px solid rgba(52, 152, 219, 0.3);
+  outline-offset: 2px;
 }
